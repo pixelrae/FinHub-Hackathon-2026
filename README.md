@@ -79,7 +79,6 @@ This payment flow powers:
 - React
 - JSX
 - Vite
-- HTML5
 - CSS3
 - JavaScript (ES6+)
 
@@ -118,35 +117,12 @@ This payment flow powers:
 
 # Current Features
 
-- Interactive financial dashboard
 - Digital wallet interface
 - QR code payment requests
 - Automatic digital payslips
 - Digital worker profiles
 - Transparent stokvel management
 - Cross-border remittances
-- Open Payments integration
-
----
-
-# Future Improvements
-
-- Employer portal
-- Credit scoring using verified income history
-- Offline payment capabilities
-- Native mobile application
-- Multi-language support
-- Additional SADC payment corridors
-
----
-
-# Git Workflow
-
-- Create a feature branch for every task.
-- Write meaningful commit messages.
-- Open a Pull Request before merging into `main`.
-- Keep the `main` branch stable.
-- Review code before merging.
 
 ---
 
