@@ -94,7 +94,7 @@ Every payment follows the Open Payments flow:
 ## Repository Structure
 
 ```text
-stride/
+Stride/
 ├── stride-frontend/
 │   └── src/
 │       ├── api/
@@ -148,8 +148,8 @@ stride/
 ### 1. Clone the repository
 
 ```bash
-git clone git clone git@github.com:pixelrae/Stride.git
-cd stride
+git clone git@github.com:pixelrae/Stride.git
+cd Stride
 ```
 
 ### 2. Install backend dependencies
@@ -174,7 +174,7 @@ FRONTEND_URL=http://localhost:5173
 OP_WALLET_ADDRESS=https://ilp.interledger-test.dev/YOUR_HANDLE
 OP_KEY_ID=your-key-uuid
 OP_PRIVATE_KEY_PATH=./your_key.key
-DB_PATH=./openremit.db
+DB_PATH=./stride.db
 JWT_SECRET=your-secret
 REPORT_SECRET=your-report-secret
 ```
@@ -400,10 +400,10 @@ A single wallet address powers:
 
 ## Built With
 
-* Interledger Protocol
-* Open Payments
-* OpenRemit
-* Interledger Test Wallet
+* [Interledger Protocol](https://interledger.org)
+* [Open Payments](https://openpayments.dev)
+* [OpenRemit](https://github.com/marclevin/OpenRemit)
+* [Interledger Test Wallet](https://wallet.interledger-test.dev)
 
 ---
 
