@@ -14,7 +14,7 @@
 - Nina Meyer
 - Azrah Parker
 - Zaakirah Levy
-- Bonolo masela
+- Bonolo Masela
 
 ---
 
