@@ -1,87 +1,104 @@
-```markdown
-# Stride — Financial Inclusion Platform
+# Stride
 
-> Built on the Interledger Protocol and Open Payments standard.
-> Hackathon project — UCT × Interledger Fintech Hackathon 2026.
+> Financial inclusion platform for informal workers across Southern Africa.
+> Built on the **Interledger Protocol (ILP)** and **Open Payments**.
+> Developed for the **UCT × Interledger Fintech Hackathon 2026**.
 
 ---
 
-## What is Stride?
+## Overview
 
-Stride is a financial inclusion platform for informal workers across Southern Africa. It enables domestic workers, day labourers, and gig workers to receive secure digital payments, automatically generate verifiable proof of income, and build a financial history that can be used to access loans, housing, and financial services.
+Stride enables domestic workers, day labourers, and gig workers to:
 
-Built on the **Interledger Protocol** and the **Open Payments** standard, Stride gives every user a portable wallet address that works across banks, mobile money providers, and digital wallets — no traditional bank account required.
+* Receive secure digital payments
+* Automatically generate verifiable proof of income
+* Build a portable financial history
+* Access loans, housing, and financial services without requiring a traditional bank account
+
+Every user receives an Interledger wallet address that works across banks, mobile money providers, and digital wallets.
 
 ---
 
 ## The Problem
 
-Millions of informal workers in South Africa are paid in cash. Without a payslip or verifiable income record they cannot:
-- Rent formal housing
-- Qualify for a loan or credit
-- Access basic financial services
+Millions of informal workers in South Africa are paid in cash. Without verifiable income records or payslips, they often cannot:
 
-Manual stokvels and expensive cross-border remittance services expose workers to fraud, poor transparency, and high transaction costs.
+* Rent formal housing
+* Qualify for loans or credit
+* Access basic financial services
+
+In addition, manual stokvels and expensive remittance services expose workers to:
+
+* Fraud
+* Poor transparency
+* High transaction costs
 
 ---
 
 ## The Solution
 
-Stride combines three tools into one platform:
+Stride combines three core tools into one platform.
 
-| Feature | Description |
-|---|---|
-| **Digital Payslips** | Every completed payment automatically becomes a verifiable proof of income |
-| **QR Payment** | Workers generate a QR code — employers scan and pay with no Stride account needed |
-| **Income Report** | Signed PDF report of all received payments, verifiable by lenders and landlords |
+| Feature              | Description                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------- |
+| **Digital Payslips** | Every completed payment automatically becomes verifiable proof of income                    |
+| **QR Payments**      | Workers generate a QR code that employers can scan and pay without needing a Stride account |
+| **Income Reports**   | Signed PDF reports of received payments that can be verified by lenders and landlords       |
 
 ---
 
 ## How It Works
 
-Every payment in Stride follows the Open Payments flow:
+Every payment follows the Open Payments flow:
 
-1. Sender and receiver both have Interledger wallet addresses
-2. App requests a grant to create an incoming payment on the receiver's account
-3. A quote is generated showing the exact amount and fees upfront
-4. Sender approves via a GNAP interactive grant
-5. Outgoing payment is created and funds move directly between accounts
-6. Both parties receive an immutable transaction record
+1. Sender and receiver both have Interledger wallet addresses.
+2. The app requests a grant to create an incoming payment on the receiver's account.
+3. A quote is generated showing the exact amount and fees upfront.
+4. The sender approves the payment via a GNAP interactive grant.
+5. An outgoing payment is created and funds move directly between accounts.
+6. Both parties receive an immutable transaction record.
 
 ---
 
 ## Tech Stack
 
-**Frontend**
-- React + Vite
-- Plain CSS (mobile-first)
-- React Router
+### Frontend
 
-**Backend**
-- Node.js + Express
-- Drizzle ORM + SQLite
-- @interledger/open-payments SDK
-- PDFKit (report generation)
-- qrcode (QR PNG generation)
+* React
+* Vite
+* React Router
+* Plain CSS (mobile-first)
 
-**Standards**
-- Open Payments (OP)
-- Interledger Protocol (ILP)
-- GNAP (Grant Negotiation and Authorization Protocol)
+### Backend
 
-**Base template**
-- [OpenRemit](https://github.com/marclevin/OpenRemit) — Open Payments hackathon launchpad
+* Node.js
+* Express
+* Drizzle ORM
+* SQLite
+* `@interledger/open-payments`
+* PDFKit
+* `qrcode`
+
+### Standards
+
+* Open Payments (OP)
+* Interledger Protocol (ILP)
+* GNAP (Grant Negotiation and Authorization Protocol)
+
+### Base Template
+
+* [OpenRemit](https://github.com/marclevin/OpenRemit) — Open Payments hackathon launchpad
 
 ---
 
 ## Repository Structure
 
-```
+```text
 stride/
-├── stride-frontend/        ← React + Vite frontend
+├── stride-frontend/
 │   └── src/
 │       ├── api/
-│       │   └── index.js    ← All API calls (swap mocks for real here)
+│       │   └── index.js
 │       ├── components/
 │       │   └── ProtectedRoute.jsx
 │       └── screens/
@@ -96,7 +113,7 @@ stride/
 │           ├── Report.jsx
 │           └── SentHistory.jsx
 │
-└── stride-backend/         ← Node.js + Express backend (forked from OpenRemit)
+└── stride-backend/
     └── backend/
         └── src/
             ├── routes/
@@ -119,34 +136,38 @@ stride/
 
 ## Prerequisites
 
-- Node.js 20+
-- An account at [wallet.interledger-test.dev](https://wallet.interledger-test.dev)
-- Two wallet addresses (one for worker, one for employer)
-- A generated key pair uploaded under Settings → Developer Keys
+* Node.js 20+
+* An account at https://wallet.interledger-test.dev
+* Two wallet addresses (worker and employer)
+* A generated key pair uploaded under **Settings → Developer Keys**
 
 ---
 
-## Setup & Installation
+## Installation
 
-**Step 1 — Clone the repo:**
+### 1. Clone the repository
+
 ```bash
-git clone <your-repo-url>
+git clone git clone git@github.com:pixelrae/Stride.git
 cd stride
 ```
 
-**Step 2 — Install backend dependencies:**
+### 2. Install backend dependencies
+
 ```bash
 cd stride-backend/backend
 npm install
 ```
 
-**Step 3 — Configure environment variables:**
+### 3. Configure environment variables
+
 ```bash
 cp .env.example .env
 ```
 
 Edit `backend/.env`:
-```
+
+```env
 PORT=3001
 BACKEND_URL=http://localhost:3001
 FRONTEND_URL=http://localhost:5173
@@ -158,12 +179,14 @@ JWT_SECRET=your-secret
 REPORT_SECRET=your-report-secret
 ```
 
-**Step 4 — Push the database schema:**
+### 4. Push the database schema
+
 ```bash
 npm run db:push
 ```
 
-**Step 5 — Install frontend dependencies:**
+### 5. Install frontend dependencies
+
 ```bash
 cd ../../stride-frontend
 npm install
@@ -171,172 +194,221 @@ npm install
 
 ---
 
-## Running the App
+## Running the Application
 
-You need two terminals open at all times.
+Open two terminals.
 
-**Terminal 1 — Backend:**
+### Terminal 1 — Backend
+
 ```bash
 cd stride-backend/backend
 npm run dev
 ```
-Wait for:
-```
+
+Expected output:
+
+```text
 Stride backend → http://localhost:3001
 ```
 
-**Terminal 2 — Frontend:**
+### Terminal 2 — Frontend
+
 ```bash
 cd stride-frontend
 npm run dev
 ```
-Wait for:
-```
+
+Expected output:
+
+```text
 Local: http://localhost:5173
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open:
+
+```text
+http://localhost:5173
+```
 
 ---
 
 ## Demo Accounts
 
-After first run, create accounts via the signup screen or via PowerShell:
+You can create demo accounts through the signup page or via PowerShell:
 
 ```powershell
 # Worker account
-Invoke-WebRequest -Uri "http://localhost:3001/api/auth/signup" -Method POST -ContentType "application/json" -Body '{"email":"nomsa@stride.com","password":"password123","displayName":"Nomsa Dlamini"}' -UseBasicParsing
+Invoke-WebRequest `
+  -Uri "http://localhost:3001/api/auth/signup" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{"email":"nomsa@stride.com","password":"password123","displayName":"Nomsa Dlamini"}'
 
 # Employer account
-Invoke-WebRequest -Uri "http://localhost:3001/api/auth/signup" -Method POST -ContentType "application/json" -Body '{"email":"employer@stride.com","password":"password123","displayName":"Sarah Johnson"}' -UseBasicParsing
+Invoke-WebRequest `
+  -Uri "http://localhost:3001/api/auth/signup" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{"email":"employer@stride.com","password":"password123","displayName":"Sarah Johnson"}'
 ```
 
 ---
 
-## Demo Script
+## Demo Flow
 
-### Step 1 — Worker generates QR code
-1. Log in as Nomsa
-2. Go to **My QR Code**
+### 1. Worker Generates QR Code
+
+1. Log in as **Nomsa**
+2. Navigate to **My QR Code**
 3. Click **Generate My QR Code**
-4. Download or display the QR
+4. Display or download the QR code
 
-### Step 2 — Employer pays via QR
-1. Scan QR with phone camera (or open `http://localhost:3001/pay/nomsa-dlamini`)
-2. Enter name, wallet address, amount, and work description
+### 2. Employer Pays via QR
+
+1. Scan the QR code or open:
+
+```text
+http://localhost:3001/pay/nomsa-dlamini
+```
+
+2. Enter:
+
+   * Name
+   * Wallet address
+   * Amount
+   * Work description
 3. Click **Pay Now**
-4. Approve at the Interledger test wallet consent screen
-5. Payment complete screen shows on phone
+4. Approve the payment in the Interledger test wallet.
+5. Payment confirmation is displayed.
 
-### Step 3 — Worker sees payslip
-1. Log in as Nomsa
-2. Go to **Income History**
-3. Click **View →** on any payment
-4. Payslip shows employer, worker, amount, description, and transaction ID verified on the Interledger Network
+### 3. Worker Views Payslip
 
-### Step 4 — Worker downloads proof of income
-1. Go to **Income Report**
+1. Log in as **Nomsa**
+2. Navigate to **Income History**
+3. Select **View**
+4. Review the generated payslip and transaction details.
+
+### 4. Download Proof of Income
+
+1. Navigate to **Income Report**
 2. Select a date range
 3. Click **Download PDF Report**
-4. PDF shows all payments with HMAC signature in footer
-5. Lender can verify at the URL in the footer
+4. The report is generated with an HMAC signature.
+5. Lenders can verify authenticity via the verification URL.
 
 ---
 
-## QR Code on Real Devices (ngrok)
+## Using QR Codes on Real Devices
 
-To scan the QR with a real phone:
+Expose the backend using ngrok:
 
 ```bash
 ngrok http 3001
 ```
 
-Copy the ngrok URL (e.g. `https://abc123.ngrok-free.app`) and update `backend/.env`:
-```
+Update `backend/.env`:
+
+```env
 BACKEND_URL=https://abc123.ngrok-free.app
 ```
 
-Restart the backend and regenerate the QR code. The QR will now encode a public URL scannable by any phone.
+Restart the backend and regenerate the QR code.
 
-> Note: Free ngrok gives a new URL every restart. Regenerate the QR each time.
+> **Note:** Free ngrok URLs change after every restart, so QR codes must be regenerated.
 
 ---
 
 ## API Endpoints
 
-### Auth
-| Method | Route | Description |
-|---|---|---|
-| POST | `/api/auth/signup` | Create account |
-| POST | `/api/auth/login` | Login, returns JWT |
-| GET | `/api/auth/me` | Get current user |
-| PATCH | `/api/auth/me` | Update profile and wallet address |
+### Authentication
+
+| Method | Route              | Description                       |
+| ------ | ------------------ | --------------------------------- |
+| POST   | `/api/auth/signup` | Create account                    |
+| POST   | `/api/auth/login`  | Login and return JWT              |
+| GET    | `/api/auth/me`     | Get current user                  |
+| PATCH  | `/api/auth/me`     | Update profile and wallet address |
 
 ### Payments
-| Method | Route | Description |
-|---|---|---|
-| POST | `/api/remit/quote` | Create payment quote |
-| POST | `/api/remit/consent` | Request GNAP interactive grant |
-| GET | `/api/remit/status/:id` | Poll transaction status |
-| GET | `/api/remit/history` | Sent and received payment history |
-| GET | `/api/callback` | GNAP redirect handler |
+
+| Method | Route                   | Description                       |
+| ------ | ----------------------- | --------------------------------- |
+| POST   | `/api/remit/quote`      | Create payment quote              |
+| POST   | `/api/remit/consent`    | Request GNAP interactive grant    |
+| GET    | `/api/remit/status/:id` | Poll transaction status           |
+| GET    | `/api/remit/history`    | Sent and received payment history |
+| GET    | `/api/callback`         | GNAP redirect handler             |
 
 ### QR
-| Method | Route | Description |
-|---|---|---|
-| POST | `/api/qr/generate` | Generate worker QR code |
-| GET | `/api/qr/download` | Download QR PNG |
-| GET | `/pay/:handle` | Public employer pay page |
-| POST | `/pay/:handle` | Submit employer payment |
 
-### Report
-| Method | Route | Description |
-|---|---|---|
-| GET | `/api/report/generate` | Stream signed PDF report |
-| GET | `/api/report/verify` | Verify report HMAC signature |
+| Method | Route              | Description                  |
+| ------ | ------------------ | ---------------------------- |
+| POST   | `/api/qr/generate` | Generate worker QR code      |
+| GET    | `/api/qr/download` | Download QR PNG              |
+| GET    | `/pay/:handle`     | Public employer payment page |
+| POST   | `/pay/:handle`     | Submit employer payment      |
+
+### Reports
+
+| Method | Route                  | Description              |
+| ------ | ---------------------- | ------------------------ |
+| GET    | `/api/report/generate` | Stream signed PDF report |
+| GET    | `/api/report/verify`   | Verify report signature  |
 
 ---
 
 ## Key Design Decisions
 
-**Employer needs no Stride account**
-The QR code encodes a plain HTTPS URL. Any camera app opens the pay page. The employer enters their wallet address and Stride orchestrates the full GNAP flow on their behalf.
+### Employer Requires No Stride Account
 
-**No balance exposure**
-Stride never sees or stores the user's wallet balance. Open Payments only handles payment instructions — balances stay private with the wallet provider.
+The QR code contains a standard HTTPS URL. Any smartphone camera can open the payment page, and Stride orchestrates the Open Payments flow.
 
-**Tamper-evident reports**
-PDF reports are signed with HMAC-SHA256. Lenders can independently verify authenticity at `/api/report/verify` without contacting Stride.
+### No Balance Exposure
 
-**One wallet address, everything**
-The same wallet address powers incoming payments, QR pay, and the financial history. Portable across providers.
+Stride never stores or accesses wallet balances. Wallet providers retain full custody and privacy.
+
+### Tamper-Evident Reports
+
+PDF reports are signed with HMAC-SHA256 and can be independently verified without contacting Stride.
+
+### One Wallet Address for Everything
+
+A single wallet address powers:
+
+* Incoming payments
+* QR payments
+* Financial history
+* Portable identity across providers
 
 ---
 
 ## Environment Variables
 
-| Variable | Description |
-|---|---|
-| `PORT` | Backend port (default 3001) |
-| `BACKEND_URL` | Public backend URL (use ngrok for demo) |
-| `FRONTEND_URL` | Frontend URL for CORS and redirects |
-| `OP_WALLET_ADDRESS` | Your Interledger wallet address |
-| `OP_KEY_ID` | UUID of your uploaded key pair |
-| `OP_PRIVATE_KEY_PATH` | Path to your .key file |
-| `DB_PATH` | SQLite database path |
-| `JWT_SECRET` | Secret for signing JWTs |
-| `REPORT_SECRET` | Secret for HMAC report signing |
+| Variable              | Description                |
+| --------------------- | -------------------------- |
+| `PORT`                | Backend port               |
+| `BACKEND_URL`         | Public backend URL         |
+| `FRONTEND_URL`        | Frontend URL               |
+| `OP_WALLET_ADDRESS`   | Interledger wallet address |
+| `OP_KEY_ID`           | Uploaded key UUID          |
+| `OP_PRIVATE_KEY_PATH` | Path to private key        |
+| `DB_PATH`             | SQLite database path       |
+| `JWT_SECRET`          | JWT signing secret         |
+| `REPORT_SECRET`       | HMAC signing secret        |
 
 ---
 
 ## Built With
 
-- [Interledger Protocol](https://interledger.org)
-- [Open Payments](https://openpayments.dev)
-- [OpenRemit](https://github.com/marclevin/OpenRemit) by Marc Levin
-- [Interledger Test Wallet](https://wallet.interledger-test.dev)
+* Interledger Protocol
+* Open Payments
+* OpenRemit
+* Interledger Test Wallet
 
 ---
 
-*Stride · UCT × Interledger Fintech Hackathon 2026 · Built on Open Payments*
-```
+<p align="center">
+  <strong>Stride</strong><br>
+  UCT × Interledger Fintech Hackathon 2026<br>
+  Built on Open Payments
+</p>
